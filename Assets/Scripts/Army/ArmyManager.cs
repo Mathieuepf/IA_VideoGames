@@ -8,7 +8,7 @@ using UnityEngine.AI;
 using UnityEngine.Events;
 
 /*
-Préparer un terrain où toutes les terrasses sont accessibles
+Prï¿½parer un terrain oï¿½ toutes les terrasses sont accessibles
 */
 
 public abstract class ArmyManager : MonoBehaviour
@@ -39,6 +39,26 @@ public abstract class ArmyManager : MonoBehaviour
         return enemies.FirstOrDefault()?.gameObject;
     }
 
+    public GameObject GetFarestEnemy<T>(Vector3 centerPos) where T : ArmyElement {
+        var enemies = GetAllEnemiesOfType<T>(true);
+        if (enemies.Count == 0) {
+            Debug.Log("Aucun ennemi trouvÃ© de type " + typeof(T).Name);
+        return null; // Retourne null si aucun ennemi n'est trouvÃ©
+    }
+        var index=0;
+        var maxDistance=0f;
+        for(int i=0; i<enemies.Count; i++){
+            var distance = Vector3.Distance(centerPos, enemies[i].transform.position); 
+            if(distance>maxDistance){
+                maxDistance=distance;
+                index=i;
+                Debug.Log("DISTAAANCE" + maxDistance);
+            }
+        }
+        var enemy = enemies[index];
+        return enemy?.gameObject;
+    }
+
     protected void ComputeStatistics(ref int nDrones,ref int nTurrets,ref int cumulatedHealth)
 	{
         nDrones = m_ArmyElements.Count(item => item is Drone);
@@ -49,7 +69,7 @@ public abstract class ArmyManager : MonoBehaviour
     // Start is called before the first frame update
     public virtual IEnumerator Start()
     {
-        yield return null; // on attend une frame que tous les objets aient été instanciés ...
+        yield return null; // on attend une frame que tous les objets aient ï¿½tï¿½ instanciï¿½s ...
 
         GameObject[] allArmiesElements = GameObject.FindGameObjectsWithTag(m_ArmyTag);
         foreach (var item in allArmiesElements)
