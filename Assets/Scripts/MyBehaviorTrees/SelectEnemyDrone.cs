@@ -19,9 +19,9 @@ public class SelectEnemyDrone : Action
 
 	public override TaskStatus OnUpdate()
 	{
-		if (m_ArmyElement.ArmyManager == null) return TaskStatus.Running; // la référence à l'armée n'a pas encore été injectée
+		if (m_ArmyElement.ArmyManager == null) return TaskStatus.Running; // la rï¿½fï¿½rence ï¿½ l'armï¿½e n'a pas encore ï¿½tï¿½ injectï¿½e
 
-		target.Value = m_ArmyElement.ArmyManager.GetRandomEnemy<Drone>(transform.position,minRadius.Value,maxRadius.Value)?.transform;
+		target.Value = m_ArmyElement.ArmyManager.GetNearestEnemy<Drone>(transform.position,minRadius.Value,maxRadius.Value)?.transform;
 		if (target.Value != null) return TaskStatus.Success;
 		else return TaskStatus.Failure;
 

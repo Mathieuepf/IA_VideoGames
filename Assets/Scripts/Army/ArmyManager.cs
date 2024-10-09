@@ -44,13 +44,33 @@ public abstract class ArmyManager : MonoBehaviour
         if (enemies.Count == 0) {
             Debug.Log("Aucun ennemi trouvé de type " + typeof(T).Name);
         return null; // Retourne null si aucun ennemi n'est trouvé
-    }
+        }
         var index=0;
         var maxDistance=0f;
         for(int i=0; i<enemies.Count; i++){
             var distance = Vector3.Distance(centerPos, enemies[i].transform.position); 
             if(distance>maxDistance){
                 maxDistance=distance;
+                index=i;
+                Debug.Log("DISTAAANCE" + maxDistance);
+            }
+        }
+        var enemy = enemies[index]; 
+        return enemy?.gameObject;
+    }
+
+    public GameObject GetNearestEnemy<T>(Vector3 centerPos) where T : ArmyElement {
+        var enemies = GetAllEnemiesOfType<T>(true);
+        if (enemies.Count == 0) {
+            Debug.Log("Aucun ennemi trouvé de type " + typeof(T).Name);
+        return null; // Retourne null si aucun ennemi n'est trouvé
+        }
+        var index=0;
+        var minDistance=100f;
+        for(int i=0; i<enemies.Count; i++){
+            var distance = Vector3.Distance(centerPos, enemies[i].transform.position); 
+            if(distance<minDistance){
+                minDistance=distance;
                 index=i;
                 Debug.Log("DISTAAANCE" + maxDistance);
             }
