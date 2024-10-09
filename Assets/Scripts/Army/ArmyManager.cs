@@ -55,7 +55,7 @@ public abstract class ArmyManager : MonoBehaviour
                 Debug.Log("DISTAAANCE" + maxDistance);
             }
         }
-        var enemy = enemies[index];
+        var enemy = enemies[index]; 
         return enemy?.gameObject;
     }
 
