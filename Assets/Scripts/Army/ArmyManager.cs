@@ -72,7 +72,7 @@ public abstract class ArmyManager : MonoBehaviour
             if(distance<minDistance){
                 minDistance=distance;
                 index=i;
-                Debug.Log("DISTAAANCE" + maxDistance);
+                //Debug.Log("DISTAAANCE" + maxDistance);
             }
         }
         var enemy = enemies[index]; 

@@ -28,4 +28,8 @@ public class ArmyManagerRed : ArmyManager
 		RefreshHudDisplay(); //pour une derni�re mise � jour en cas de victoire
 	}
 
+	public void BoostRedArmy()
+	{
+		
+	}
 }
