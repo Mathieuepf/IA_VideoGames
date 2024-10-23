@@ -6,7 +6,7 @@ namespace BehaviorDesigner.Runtime.Tasks
     [TaskIcon("{SkinColor}LogIcon.png")]
     public class Log : Action
     {
-        [Tooltip("On est bien dans ce qu'il faut")]
+        [Tooltip("Cycle normal")]
         public SharedString text;
         [Tooltip("Is this text an error?")]
         public SharedBool logError;

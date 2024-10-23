@@ -7,6 +7,6 @@ public class Boost : MonoBehaviour
 {
 	public void BoostRedArmy()
 	{
-		IsBoostedDrone.isBoosted = true;
+		IsBoostedDrone.BoostRedDrone();
 	}
 }

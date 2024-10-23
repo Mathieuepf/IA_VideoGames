@@ -6,23 +6,30 @@ using Action = BehaviorDesigner.Runtime.Tasks.Action;
 
 public class IsBoostedDrone : Action
 {
-    public static Boolean isBoosted;
+    private static Boolean _isBoosted;
     public override void OnStart()
     {
-		
+        
     }
 
     public override TaskStatus OnUpdate()
     {
-        if (isBoosted)
+        if (_isBoosted)
         {
-            return TaskStatus.Failure;
+            Debug.Log("IsBoostedDrone true");
+            return TaskStatus.Success;
         }
-        return TaskStatus.Success;
+        Debug.Log("IsBoostedDrone false");
+        return TaskStatus.Failure;
     }
     
-    public void BoostRedDrone()
+    public static void BoostRedDrone()
     {
-        isBoosted = true;
+        _isBoosted = true;
+    }
+
+    public static void StopBoostedDrone()
+    {
+        _isBoosted = false;
     }
 }

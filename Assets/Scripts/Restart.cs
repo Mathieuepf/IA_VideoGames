@@ -7,7 +7,7 @@ public class Restart : MonoBehaviour
 {
 	public void RestartSameLevel()
 	{
-		IsBoostedDrone.isBoosted = false;
+		IsBoostedDrone.StopBoostedDrone();
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 }
