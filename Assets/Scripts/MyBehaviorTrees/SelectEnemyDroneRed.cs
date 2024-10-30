@@ -23,7 +23,7 @@ public class SelectEnemyDroneRed : Action
 		
 		if (target.Value != null) return TaskStatus.Success; // Si target toujours en vie, garder la meme target
 		
-		target.Value = m_ArmyElement.ArmyManager.GetRandomEnemy<Drone>(transform.position,minRadius.Value,maxRadius.Value)?.transform;
+		target.Value = m_ArmyElement.ArmyManager.GetNearestEnemy<Drone>(transform.position,minRadius.Value,maxRadius.Value)?.transform;
 		
 		if (target.Value != null) return TaskStatus.Success;
 		else return TaskStatus.Failure;

@@ -5,7 +5,7 @@ using BehaviorDesigner.Runtime.Tasks;
 [TaskCategory("MyTasks")]
 [TaskDescription("Select non targeted enemy turret")]
 
-public class SelectEnemyTurretRed : Action
+public class SelectEnemyTurretRedForTurrets : Action
 {
 	IArmyElement m_ArmyElement;
 	public SharedTransform target;
@@ -25,7 +25,7 @@ public class SelectEnemyTurretRed : Action
 		if (target.Value != null) return TaskStatus.Success; // Si target toujours en vie, garder la meme target
 		
 		//target.Value = m_ArmyElement.ArmyManager.GetRandomEnemy<Turret>(transform.position,minRadius.Value,maxRadius.Value)?.transform;
-		target.Value = m_ArmyElement.ArmyManager.GetNearestEnemy<Turret>(transform.position,minRadius.Value,maxRadius.Value)?.transform;
+		target.Value = m_ArmyElement.ArmyManager.GetFarestEnemy<Turret>(transform.position,minRadius.Value,maxRadius.Value)?.transform;
 		
 		if (target.Value != null) return TaskStatus.Success;
 		else return TaskStatus.Failure;

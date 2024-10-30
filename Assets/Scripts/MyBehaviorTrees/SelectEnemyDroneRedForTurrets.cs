@@ -3,15 +3,14 @@ using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
 
 [TaskCategory("MyTasks")]
-[TaskDescription("Select non targeted enemy turret")]
+[TaskDescription("Select non targeted enemy Drone")]
 
-public class SelectEnemyTurretRed : Action
+public class SelectEnemyDroneRedForTurrets : Action
 {
 	IArmyElement m_ArmyElement;
 	public SharedTransform target;
 	public SharedFloat minRadius;
 	public SharedFloat maxRadius;
-	public SharedInt testSharedInt;
 
 	public override void OnAwake()
 	{
@@ -24,8 +23,7 @@ public class SelectEnemyTurretRed : Action
 		
 		if (target.Value != null) return TaskStatus.Success; // Si target toujours en vie, garder la meme target
 		
-		//target.Value = m_ArmyElement.ArmyManager.GetRandomEnemy<Turret>(transform.position,minRadius.Value,maxRadius.Value)?.transform;
-		target.Value = m_ArmyElement.ArmyManager.GetNearestEnemy<Turret>(transform.position,minRadius.Value,maxRadius.Value)?.transform;
+		target.Value = m_ArmyElement.ArmyManager.GetNearestEnemy<Drone>(transform.position,minRadius.Value,maxRadius.Value)?.transform;
 		
 		if (target.Value != null) return TaskStatus.Success;
 		else return TaskStatus.Failure;

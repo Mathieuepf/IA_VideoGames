@@ -39,7 +39,7 @@ public abstract class ArmyManager : MonoBehaviour
         return enemies.FirstOrDefault()?.gameObject;
     }
 
-    public GameObject GetFarestEnemy<T>(Vector3 centerPos) where T : ArmyElement {
+    public GameObject GetFarestEnemy<T>(Vector3 centerPos, float minRadius, float maxRadius) where T : ArmyElement {
         var enemies = GetAllEnemiesOfType<T>(true);
         if (enemies.Count == 0) {
             Debug.Log("Aucun ennemi trouvé de type " + typeof(T).Name);
@@ -59,7 +59,7 @@ public abstract class ArmyManager : MonoBehaviour
         return enemy?.gameObject;
     }
 
-    public GameObject GetNearestEnemy<T>(Vector3 centerPos) where T : ArmyElement {
+    public GameObject GetNearestEnemy<T>(Vector3 centerPos, float minRadius, float maxRadius) where T : ArmyElement {
         var enemies = GetAllEnemiesOfType<T>(true);
         if (enemies.Count == 0) {
             Debug.Log("Aucun ennemi trouvé de type " + typeof(T).Name);
