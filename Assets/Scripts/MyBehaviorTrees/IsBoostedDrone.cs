@@ -17,10 +17,10 @@ public class IsBoostedDrone : Action
         if (_isBoosted)
         {
             Debug.Log("IsBoostedDrone true");
-            return TaskStatus.Success;
+            return TaskStatus.Failure;
         }
         Debug.Log("IsBoostedDrone false");
-        return TaskStatus.Failure;
+        return TaskStatus.Success;
     }
     
     public static void BoostRedDrone()
