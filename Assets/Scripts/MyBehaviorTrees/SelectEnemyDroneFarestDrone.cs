@@ -5,7 +5,7 @@ using BehaviorDesigner.Runtime.Tasks;
 [TaskCategory("MyTasks")]
 [TaskDescription("Select non targeted enemy Drone")]
 
-public class SelectEnemyDroneRedForTurrets : Action
+public class SelectEnemyDroneFarestDrone : Action
 {
 	IArmyElement m_ArmyElement;
 	public SharedTransform target;
@@ -21,7 +21,7 @@ public class SelectEnemyDroneRedForTurrets : Action
 	{
 		if (m_ArmyElement.ArmyManager == null) return TaskStatus.Running; // la r�f�rence � l'arm�e n'a pas encore �t� inject�e
 		
-		if (target.Value != null) return TaskStatus.Success; // Si target toujours en vie, garder la meme target
+		//if (target.Value != null) return TaskStatus.Success; // Si target toujours en vie, garder la meme target
 		
 		target.Value = m_ArmyElement.ArmyManager.GetNearestEnemy<Drone>(transform.position,minRadius.Value,maxRadius.Value)?.transform;
 		
