@@ -104,7 +104,7 @@ public abstract class ArmyManager : MonoBehaviour
         yield break;
     }
 
-    protected void RefreshHudDisplay()
+    public void RefreshHudDisplay()
 	{
         int nDrones=0, nTurrets=0, health=0;
         ComputeStatistics(ref nDrones, ref nTurrets, ref health);
@@ -121,7 +121,27 @@ public abstract class ArmyManager : MonoBehaviour
 
         if (m_ArmyElements.Count == 0 & m_OnArmyIsDead!=null) m_OnArmyIsDead.Invoke();
     }
+
+    // mes ajouts
+    public static ArmyManager Instance { get; private set; }
+
+       public void AddArmyElement(GameObject go)
+    {
+        IArmyElement armyElement = go.GetComponent<IArmyElement>();
+        if (armyElement != null && !m_ArmyElements.Contains(armyElement))
+        {
+            m_ArmyElements.Add(armyElement); 
+            RefreshHudDisplay(); 
+        }
+    }
+
     
+ public List<Drone> drones;
+    public List<T> GetArmyElements<T>() where T : IArmyElement
+{
+     return m_ArmyElements.OfType<T>().ToList(); 
+
+}   
 }
 
 

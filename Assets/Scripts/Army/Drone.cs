@@ -33,7 +33,30 @@ public class Drone : ArmyElement,IShoot
 	public void Die()
 	{
 		ArmyManager.ArmyElementHasBeenKilled(gameObject);
+		gameObject.SetActive(false); 
 		Destroy(gameObject);
 	}
+	
 
+
+	// Mon ajout
+	   public bool IsDead { get; private set; } = false;
+
+	public void Revive()
+{
+   IsDead = false;
+    // Par exemple, rétablir la santé et réactiver le GameObject
+    gameObject.SetActive(true); // Réactiver le drone
+    ArmyManager.AddArmyElement(gameObject);
+     
+}
+
+
+// public void Die()
+// {
+//     IsDead = true; // Mark the drone as dead
+//     ArmyManager.ArmyElementHasBeenKilled(gameObject);
+//     gameObject.SetActive(false); // Désactiver le GameObject au lieu de le détruire 
+// }
+ 
 }
