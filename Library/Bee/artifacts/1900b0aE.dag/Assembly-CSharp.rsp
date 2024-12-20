@@ -1027,6 +1027,7 @@
 "Assets/Scripts/MyBehaviorTrees/StopBoostDrone.cs"
 "Assets/Scripts/MyBehaviorTrees/TurretSeekTarget.cs"
 "Assets/Scripts/MyBehaviorTrees/TurretShoot.cs"
+"Assets/Scripts/PoisonCloud.cs"
 "Assets/Scripts/Reanimate.cs"
 "Assets/Scripts/Restart.cs"
 "Assets/Scripts/RotateAround.cs"
