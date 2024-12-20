@@ -1,0 +1,9 @@
+
+=== Sun Nov 24 13:14:47 2024
+
+Packages were changed.
+Update Mode: updateDependencies
+
+The following packages were updated:
+  com.unity.collab-proxy from version 2.4.4 to 2.5.1
+  com.unity.textmeshpro from version 3.0.6 to 3.0.7
